@@ -17,7 +17,9 @@ title: EventMaster
 
 ## Dependencies
 
-* [mo/lang](https://github.com/dexteryy/mo)
+* [mo/lang/es5](https://github.com/dexteryy/mo/es5)
+* [mo/lang/mix](https://github.com/dexteryy/mo/mix)
+* [mo/lang/struct](https://github.com/dexteryy/mo/struct)
 
 ## Examples
 
@@ -48,7 +50,7 @@ var event = Event();
 
 * `event.promise(subject)` -- 
 * `event.when(subject, subject, ...)` -- 
-* `event.wait(subject, callback, errorCallback)` -- 
+* `event.once(subject, callback, errorCallback)` -- 
 * `event.done(subject, callback)` -- 
 * `event.fail(subject, callback)` -- 
 * `event.cancel(subject, callback, errorCallback)` -- 
