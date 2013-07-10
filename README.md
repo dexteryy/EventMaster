@@ -25,10 +25,12 @@ npm install eventmaster
 
 ### Get the Code
 
-* [Download on Github](https://github.com/dexteryy/EventMaster/blob/master/eventmaster.js)
-* Add to your project as new dependency:
-    * via [istatic](http://ozjs.org/istatic)
-    * via [volo](https://github.com/volojs/volo)
+Add to your project as new dependency
+
+* via [bower](http://bower.io/) - `bower install eventmaster`
+* via [istatic](http://ozjs.org/istatic)
+
+Or [download directly from Github](https://github.com/dexteryy/EventMaster/blob/master/eventmaster.js)
 
 ## Dependencies
 
