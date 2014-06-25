@@ -1,10 +1,10 @@
 {
     "name": "eventmaster",
     "description": "A simple, compact and consistent implementation that provides both Promise/Deferred/Flow pattern and Event/Notify/Observer/PubSub pattern",
-    "version": "2.1.0",
+    "version": "2.2.0-beta.1",
     "main": "eventmaster.js",
     "dependencies": {
-        "mo": "~1.5.2"
+        "mo": "~1.7.2"
     },
     "ignore": [
         "dest",

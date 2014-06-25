@@ -5,8 +5,11 @@ title: EventMaster
 
 # EventMaster
 
-> * A simple, compact and consistent implementation of a variant of CommonJS's *Promises* and *Events*
-> * Provide both *Promise/Deferred/Flow* pattern and *Event/Notify/Observer/PubSub* pattern
+> Promise + Event = ?
+
+## Examples
+
+* [demo](http://ozjs.org/EventMaster/examples/)
 
 ## In NodeJS
 
@@ -16,21 +19,9 @@ npm install eventmaster
 
 ## In browser
 
-### AMD and OzJS
-
-* EventMaster can either be viewed as an independent library, or as a part of [OzJS mirco-framework](http://ozjs.org/#framework).
-* It's wrapped as an [AMD (Asynchronous Module Definition)](https://github.com/amdjs/amdjs-api/wiki/AMD) module. You should use it with [oz.js](http://ozjs.org/#start) (or require.js or [similar](http://wiki.commonjs.org/wiki/Implementations) for handling dependencies). 
-* If you want to make it available for both other AMD code and traditional code based on global namespace. OzJS provides [a mini define/require implementation](http://ozjs.org/examples/adapter/) to transform AMD module into traditional [module pattern](http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth).
-* See [http://ozjs.org](http://ozjs.org) for details.
-
-### Get the Code
-
-Add to your project as new dependency
-
-* via [bower](http://bower.io/) - `bower install eventmaster`
-* via [istatic](http://ozjs.org/istatic)
-
-Or [download directly from Github](https://github.com/dexteryy/EventMaster/blob/master/eventmaster.js)
+```
+bower install eventmaster`
+```
 
 ## Dependencies
 
@@ -38,93 +29,60 @@ Or [download directly from Github](https://github.com/dexteryy/EventMaster/blob/
 * [mo/lang/mix](https://github.com/dexteryy/mo/mix)
 * [mo/lang/struct](https://github.com/dexteryy/mo/struct)
 
-## Examples
-
-* [demo](http://ozjs.org/EventMaster/examples/)
-
 ## API and usage
 
 ```javascript 
-var Event = require('eventmaster');
+var eventFactory = require('eventmaster/event');
+var event = eventFactory();
+var singleEvent = new eventFactory.Event();
 ```
 
-* `Event(opt)` -- 
-* `Event.Promise(opt)` -- 
-* `Event.Event(opt)` -- 
-* `Event.when(promise, promise, ...)` -- 
-* `Event.pipe(prev, next)` -- 
+* `event.on`/`event.bind`/`event.addListener`
+* `event.off`/`event.unbind`/`event.removeListener`
+* `event.emit`/`event.trigger`/`event.fire`
+* `event.disable`
+* `event.enable`
 
 ```javascript 
-var event = Event();
+var eventFactory = require('eventmaster/stateful');
+var event = eventFactory();
+var singleEvent = new eventFactory.StatefulEvent();
 ```
 
-* `event.promise(subject)` -- 
-* `event.when(subject, subject, ...)` -- 
-* `event.once(subject, callback, errorCallback)` -- 
-* `event.done(subject, callback)` -- 
-* `event.fail(subject, callback)` -- 
-* `event.cancel(subject, callback, errorCallback)` -- 
-* `event.bind(subject, callback)` -- 
-* `event.unbind(subject, callback)` -- 
-* `event.on()` -- alias for `event.bind`
-* `event.off()` -- alias for `event.unbind`
-* `event.progress(subject, callback)` -- 
-* `event.notify(subject, [arg, arg, ...])` -- 
-* `event.fire(subject, [arg, arg, ...])` -- 
-* `event.error(subject, [arg, arg, ...])` -- 
-* `event.resolve(subject, [arg, arg, ...])` -- 
-* `event.reject(subject, [arg, arg, ...])` -- 
-* `event.reset(subject)` -- 
-* `event.disable(subject)` -- 
-* `event.enable(subject)` -- 
+_(In addition to the above API)_
+* `event.addOnceListener`/`event.once`/`event.wait`
+* `event.removeOnceListener`/`event.cancel`
+* `event.progress`
+* `event.notify`
+* `event.resolve`
+* `event.reset`
+* `event.merge`
 
 ```javascript 
-var promise = Event.Promise();
+var eventFactory = require('eventmaster');
+var event = eventFactory();
+var promise = new eventFactory.Promise();
 ```
 
-* `promise.then(callback, errorCallback)` -- 
-* `promise.done(callback)` -- 
-* `promise.fail(callback)` -- 
-* `promise.cancel(callback, errorCallback)` -- 
-* `promise.bind(callback)` -- 
-* `promise.unbind(callback)` -- 
-* `promise.progress()` -- 
-* `promise.notify()` -- 
-* `promise.fire([arg, arg, ...])` -- 
-* `promise.error([arg, arg, ...])` -- 
-* `promise.resolve([arg, arg, ...])` -- 
-* `promise.reject([arg, arg, ...])` -- 
-* `promise.reset()` -- 
-* `promise.disable()` -- 
-* `promise.enable()` -- 
-* `promise.merge()` -- 
-* `promise.follow()` -- 
-* `promise.end()` -- 
-* `promise.all()` -- 
-* `promise.any()` -- 
-* `promise.some()` -- 
-* `promise.pipe.fire(arg, arg, ...)` -- 
-* `promise.pipe.error(arg, arg, ...)` -- 
-* `promise.pipe.notify()` --
-* `promise.pipe.resolve(arg, arg, ...)` -- 
-* `promise.pipe.reject(arg, arg, ...)` -- 
-* `promise.pipe.disable()` --
-* `promise.pipe.enable()` --
-* `promise.pipe.reset()` -- 
-
-Under construction...
+_(In addition to the above API)_
+* `event.then`/`event.addOnceListener`/`event.once`/`event.wait`
+* `event.done`
+* `event.fail`
+* `event.error`
+* `event.reject`
+* `event.follow`
+* `event.end`
+* `event.all`
+* `event.any`
+* `event.some`
 
 ## More References
 
 See [OzJS Project Homepage](http://ozjs.org/)
 
-## Release History
-
-See [OzJS Release History](http://ozjs.org/#release)
-
 ## License
 
-Copyright (c) 2010 - 2013 dexteryy  
+Copyright (c) 2010 - 2014 dexteryy  
 Licensed under the MIT license.
 
 
